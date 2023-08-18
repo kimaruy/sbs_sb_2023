@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.kcm.exam.demo.repository.ArticleRepository">
+	namespace="com.khj.exam.demo.repository.ArticleRepository">
 	
 	<insert id="writeArticle">
 		INSERT INTO article
@@ -11,12 +11,6 @@
 		title = #{title},
 		`body`= #{body}
 	</insert>
-	
-	<select id="getArticle" resultType="Article">
-		SELECT * 
-		FROM article
-		WHERE id = #{id}
-	</select>
 	
 	<delete id="deleteArticle">
 		DELETE FROM article
