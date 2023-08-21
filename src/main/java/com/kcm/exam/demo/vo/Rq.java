@@ -1,6 +1,11 @@
 package com.kcm.exam.demo.vo;
 
+import java.io.IOException;
+
+import com.kcm.exam.demo.util.Ut;
+
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 
@@ -10,7 +15,13 @@ public class Rq {
 	@Getter
 	private int loginedMemberId;
 	
-	public Rq(HttpServletRequest req) {
+	private HttpServletRequest req;
+	private HttpServletResponse resp;
+	
+	public Rq(HttpServletRequest req, HttpServletResponse resp) {
+		this.req = req;
+		this.resp = resp;
+		
 		HttpSession httpSession = req.getSession();
 		
 		boolean isLogined = false;
@@ -24,5 +35,32 @@ public class Rq {
 		this.isLogined = isLogined;
 		this.loginedMemberId = loginedMemberId;
 		
+	}
+
+	public void printHistoryBackJs(String msg) {
+		resp.setContentType("text/html; charset=UTF-8");
+		
+		println("<script>");
+		
+		if ( !Ut.empty(msg) ) {
+			println("alert('" + msg+"')");
+		}
+		
+		println("history.back();");
+		
+		println("</script>");
+	}
+
+	public void print(String str) {
+		try {
+			resp.getWriter().append(str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	private void println(String str) {
+		print(str + "\n");
 	}
 }
