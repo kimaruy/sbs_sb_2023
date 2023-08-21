@@ -15,7 +15,6 @@ import com.kcm.exam.demo.vo.ResultData;
 import com.kcm.exam.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrArticleController {
