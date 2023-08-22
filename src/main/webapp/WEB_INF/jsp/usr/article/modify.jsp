@@ -6,7 +6,7 @@
 <section class="mt-5">
   <div class="container mx-auto px-3">
     <form class="table-box-type-1" action="../article/doModify" method="POST">
-    <input type="hidden" name="id" value="${article.id}"/>
+    <input type="hidden" name="id" value="${article.id }"/>
     
       <table>
       <colgroup>
